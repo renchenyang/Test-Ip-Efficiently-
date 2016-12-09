@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+    <title>主机在线状态监测管理系统</title>
+    <link rel="StyleSheet" href="../static/css/chart.css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+    <div class="widget widget-table">
+        <div class="widget-header">
+            <i class="icon-th-list"></i>
+
+            <h3>网络状态显示（当前为普通用户，不能添加删除ip）</h3>
+        </div>
+        <div class="widget-content">
+            <table class="table table-striped table-bordered" table border="0" cellpadding="0" cellspacing="0"
+                   id="tabProduct">
+                <thead>
+                <tr>
+                    <td class="hidden">id</td>
+                    <td bgcolor="#EFEFEF" EditType="TextBox">主机</td>
+                    <td bgcolor="#EFEFEF" EditType="TextBox">是否可达</td>
+                    <td bgcolor="#EFEFEF" EditType="TextBox"></td>
+                    <td bgcolor="#EFEFEF" EditType="TextBox"></td>
+                    <td bgcolor="#EFEFEF" EditType="TextBox"></td>
+                </tr>
+                </thead>
+                <tbody> </tbody>
+            </table>
+        </div>
+        <br/>
+        <a href="/account/logout/" type="button" name="Submit" class="btn btn-success pull-right">注销</a>
+    </div>
+</form>
+
+<script>
+    $(document).ready(
+            reload_table()
+    )
+
+    function reload_table() {
+        $.ajax({
+            url: "/todogetlist/",
+            type: "get",
+            dataType: "JSON",
+            success: function (data) {
+                $("#tabProduct").children("tbody").empty()
+                var htmlstr = ""
+                for (var i = 0; i < data.todolist.length; i++) {
+                    htmlstr = htmlstr + "<tr>\n" +
+                            "<input type=\"hidden\" value=\"\" name=\"id\"/>\n" +
+                            "<td class='hidden'>" + data.todolist[i].ip + "</td>\n" +
+                            "<td bgcolor=\"#FFFFFF\">" + data.todolist[i].ip + "</td>\n" +
+                            "<td bgcolor=\"#FFFFFF\">" + data.todolist[i].content + "</td>\n" +
+                            "<td class=\"text-center\">\n" +
+                            "<a href=\"/history/?todoid=" + data.todolist[i].ip + "\" type=\"button2\" name=\"Submit2\">查看历史记录</a>\n" +
+                            "</td>\n" +
+                            "</tr>";
+                }
+                $("#tabProduct").children("tbody").html(htmlstr);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert('获取数据错误');
+            }
+        });
+        setTimeout(reload_table, 5000);
+    }
+</script>
+
+</body>
+
+</html>

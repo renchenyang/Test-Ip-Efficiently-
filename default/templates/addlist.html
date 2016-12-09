@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <title>添加新的监听ip</title>
+    <meta name="keywords" content="添加新的监听ip">
+    <meta name="description" content="添加新的监听ip">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="StyleSheet" href="../static/css/register4.css">
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js">
+    </script>
+    <!--script src="添加新的联系人的jq.js"></script-->
+    <script src="../static/js/register.js"></script>
+</head>
+
+<body>
+    <div class="form_content">
+        <form id="test" action="#" method="POST" onsubmit="return login3()">{% csrf_token %}
+            <fieldset>
+                <legend>添加新的监听ip</legend>
+                <div class="form-row">
+                    <div class="field-label">
+                        <label for="field3">ip</label>:</div>
+                    <div class="field-widget">
+                        <input name="field3" id="field3" class="required" onblur="login3()"/>
+                        <p class="warn" id="warn3"></p>
+                    </div>
+                </div>
+            </fieldset>
+            <input type="submit" class="submit" value="添加" onclick="login6()" />
+            <button type="reset" class="reset" onclick="location.href='/'">取消</button>
+        </form>
+    </div>
+</body>
+
+</html>

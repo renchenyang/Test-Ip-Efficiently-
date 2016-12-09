@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>用户登录</title>
+    <meta name="keywords" content="通讯录,登录">
+    <meta name="description" content="通讯录的登录页面">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="StyleSheet" href="../../static/css/login2.css" type="text/css">
+    <!--script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js">
+    </script-->
+    <!--script src="../../static/js/loginjquery.js"></script-->
+    <script src="../../static/js/loginjs.js"></script>
+</head>
+
+<body>
+<div class="main-tit">
+    <div class="container clearfix">
+        <h3 class="fb">主机在线状态监测管理系统</h3></div>
+</div>
+<div class="container">
+    <div class="login-form">
+        <form method="post" id="loginForm" action="#" enctype="multipart/form-data" onsubmit="return login3()">
+            <div class="form-group">
+                <label for="exampleInputEmail1">用户名：</label>
+                <input type="text" class="form-control user" id="username" name="username" value="" placeholder="请输入用户名"
+                       onblur="login1()">
+                <p class="warn" id="warn1"></p>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">密码：</label>
+                <input type="password" class="form-control pass" id="password" name="password" minlength="6"
+                       placeholder="请输入密码" onblur="login2()">
+                <p class="warn" id="warn2"></p>
+            </div>
+            <button  type="submit" class="btn btn-b" >马上登录</button>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>
